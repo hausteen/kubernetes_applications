@@ -12,7 +12,7 @@ spec:
     - chart: longhorn
       helm:
         valueFiles:
-          - values.yaml
+          - ./values.yaml
       repoURL: https://charts.longhorn.io/
       targetRevision: v1.10.1
   syncPolicy:
