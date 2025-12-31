@@ -23,8 +23,6 @@ spec:
       enabled: true
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
     managedNamespaceMetadata:
       labels:
         pod-security.kubernetes.io/enforce: privileged
@@ -33,3 +31,10 @@ spec:
         pod-security.kubernetes.io/audit-version: latest
         pod-security.kubernetes.io/warn: privileged
         pod-security.kubernetes.io/warn-version: latest
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+    syncOptions:
+      - CreateNamespace=true

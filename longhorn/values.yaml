@@ -1,4 +1,0 @@
-defaultSettings:
-  defaultDataPath: /var/mnt/longhorn
-preUpgradeChecker:
-  jobEnabled: false
