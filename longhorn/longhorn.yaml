@@ -11,8 +11,11 @@ spec:
   sources:
     - chart: longhorn
       helm:
-        valueFiles:
-          - ./values.yaml
+        valuesObject: # using this instead of the values.yaml file since the file was not working
+          defaultSettings:
+            defaultDataPath: /var/mnt/longhorn
+          preUpgradeChecker:
+            jobEnabled: false
       repoURL: https://charts.longhorn.io/
       targetRevision: v1.10.1
   syncPolicy:
