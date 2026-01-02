@@ -4,22 +4,22 @@ metadata:
   name: longhorn
   namespace: argocd
 spec:
-  destination:
-    namespace: longhorn-system
-    server: https://kubernetes.default.svc
   project: default
-  sources:
-    - chart: longhorn
-      helm:
-        valuesObject: # using this instead of the values.yaml file since the file was not working
-          defaultSettings:
-            allowCollectingLonghornUsageMetrics: false
-            defaultDataPath: /var/mnt/longhorn
-            storageReservedPercentageForDefaultDisk: 0
-          preUpgradeChecker:
-            jobEnabled: false
-      repoURL: https://charts.longhorn.io/
-      targetRevision: v1.10.1
+  source:
+    repoURL: https://charts.longhorn.io/
+    targetRevision: v1.10.1
+    chart: longhorn
+    helm:
+      valuesObject: # using this instead of the values.yaml file since the file was not working
+        defaultSettings:
+          allowCollectingLonghornUsageMetrics: false
+          defaultDataPath: /var/mnt/longhorn
+          storageReservedPercentageForDefaultDisk: 0
+        preUpgradeChecker:
+          jobEnabled: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: longhorn-system
   syncPolicy:
     automated:
       enabled: true
