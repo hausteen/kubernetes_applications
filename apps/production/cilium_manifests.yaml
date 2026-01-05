@@ -16,7 +16,6 @@ spec:
     directory:
   destination:
     server: https://kubernetes.default.svc
-    namespace: cilium-manifests
   syncPolicy:
     automated:
       enabled: true

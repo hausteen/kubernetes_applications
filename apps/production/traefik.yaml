@@ -20,6 +20,7 @@ spec:
         service:
           type: LoadBalancer # needs to be 'loadbalancer' so that the traefik service receives an ip address from cilium lb ipam
         global:
+          checkNewVersion: false
           sendAnonymousUsage: false
         ingressClass:
           enabled: false # create a default IngressClass for traefik
@@ -51,7 +52,7 @@ spec:
             http:
               sanitizePath: true
             tls:
-              enabled: true # figure out how to make traefik create its own self signed certificate
+              enabled: true
         securityContext:
           seccompProfile:
             type: RuntimeDefault

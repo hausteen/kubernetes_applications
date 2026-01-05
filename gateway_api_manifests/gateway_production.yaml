@@ -4,8 +4,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: argocd
-  namespace: argocd
+  name: production
+  namespace: gateway-api
 spec:
   gatewayClassName: traefik
   listeners:
@@ -14,15 +14,12 @@ spec:
       port: 80
       allowedRoutes:
         namespaces:
-          from: Same
+          from: All
     - name: https
       protocol: HTTPS
       port: 443
       allowedRoutes:
         namespaces:
-          from: Same
+          from: All
       tls:
-        mode: Terminate
-        certificateRefs:
-          - name: secret-tls
-            namespace: argocd
+        mode: Passthrough
