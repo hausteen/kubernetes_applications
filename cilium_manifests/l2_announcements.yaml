@@ -3,7 +3,6 @@ apiVersion: "cilium.io/v2alpha1"
 kind: CiliumL2AnnouncementPolicy
 metadata:
   name: l2-announcements
-  namespace: cilium-manifests
 spec:
   interfaces:
     - ^eth[0-9]+
