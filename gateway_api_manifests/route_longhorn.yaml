@@ -13,9 +13,9 @@ spec:
     - longhorn.production.home.hunt.internal
   rules:
     - matches:
-      - path:
-          type: PathPrefix
-          value: /
+        - path:
+            type: PathPrefix
+            value: /
       backendRefs:
         - name: longhorn-frontend
           port: 80
