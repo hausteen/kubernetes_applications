@@ -1,0 +1,10 @@
+# https://docs.cilium.io/en/stable/network/lb-ipam/
+# "LB IPAM is a feature that allows Cilium to assign IP addresses to Services of type LoadBalancer."
+apiVersion: "cilium.io/v2"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: load-balancer-ip-address-management-pool
+spec:
+  blocks:
+    - start: "192.168.20.80"
+      stop: "192.168.20.99"

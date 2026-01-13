@@ -1,7 +1,0 @@
-# https://gateway-api.sigs.k8s.io/api-types/gatewayclass/
-apiVersion: gateway.networking.k8s.io/v1
-kind: GatewayClass
-metadata:
-  name: production
-spec:
-  controllerName: traefik.io/gateway-controller

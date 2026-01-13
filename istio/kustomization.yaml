@@ -1,0 +1,34 @@
+# Installing in "ambient" mode with "waypoint" proxies as well
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - resources/namespace.yaml
+  - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.1/standard-install.yaml # gateway api crds
+  # - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.1/experimental-install.yaml # gateway api crds
+helmCharts:
+  - name: istio/base
+    repo: https://istio-release.storage.googleapis.com/charts
+    version: 1.28.2
+    namespace: istio-system
+    includeCRDs: true
+    valuesFile: valuesBase.yaml
+  - name: istio/istiod
+    repo: https://istio-release.storage.googleapis.com/charts
+    version: 1.28.2
+    namespace: istio-system
+    includeCRDs: true
+    valuesFile: valuesIstiod.yaml
+  - name: istio/cni
+    repo: https://istio-release.storage.googleapis.com/charts
+    version: 1.28.2
+    namespace: istio-system
+    includeCRDs: true
+    valuesFile: valuesCni.yaml
+  - name: istio/ztunnel
+    repo: https://istio-release.storage.googleapis.com/charts
+    version: 1.28.2
+    namespace: istio-system
+    includeCRDs: true
+    valuesFile: valuesZtunnel.yaml
+  # how do I install waypoint proxy???
+  # how to get istio to not deploy a gatewayclass or gateway by default???
