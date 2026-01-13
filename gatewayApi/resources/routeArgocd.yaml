@@ -7,7 +7,7 @@ metadata:
 spec:
   parentRefs:
     - name: huntInternal
-      namespace: gateway-api
+      namespace: gatewayApi
       sectionName: https
   hostnames:
     - argocd.production.home.hunt.internal
