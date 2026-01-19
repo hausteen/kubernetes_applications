@@ -8,7 +8,7 @@ spec:
   parentRefs:
     - name: hunt-internal-production-home
       namespace: gateway-api
-      sectionName: http
+      sectionName: https
   hostnames:
     - longhorn.production.home.hunt.internal
   rules:
