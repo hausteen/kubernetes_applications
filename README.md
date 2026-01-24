@@ -11,6 +11,7 @@ I am using the app of apps pattern in Argo CD to deploy and manage Kubernetes ap
 | argocd | 20 |
 | cilium | 30 |
 | certManager | 40 |
+| coredns | 41 |
 | envoyGateway | 50 |
 | longhorn | 60 |
 | gatewayApi | 70 |
@@ -24,6 +25,7 @@ I am using the app of apps pattern in Argo CD to deploy and manage Kubernetes ap
 | argocd | none |
 | cilium | none |
 | certManager | namespaceCreation |
+| coredns | namespaceCreation |
 | envoyGateway | namespaceCreation, certmanager |
 | longhorn | namespaceCreation |
 | gatewayApi | namespaceCreation, certManager, envoyGateway |

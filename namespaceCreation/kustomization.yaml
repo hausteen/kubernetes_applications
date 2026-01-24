@@ -5,6 +5,7 @@ resources:
   - resources/envoyGateway.yaml
   - resources/gatewayApi.yaml
   - resources/longhorn.yaml
+  - resources/coredns.yaml
 
 # Other namespaces
 # argocd            is created when the cluster is bootstrapped initially

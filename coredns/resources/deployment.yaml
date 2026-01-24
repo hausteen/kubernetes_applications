@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coredns
+spec:
+  replicas: 1 # set to 2 eventually when i figure out how to get externalDNS to update both.
+  selector:
+    matchLabels:
+      app: coredns
+  template:
+    metadata:
+      labels:
+        app: coredns
+    spec:
+      containers:
+        - name: coredns
+          image: coredns/coredns:1.14.1
+          args: [ "-conf", "/etc/coredns/Corefile" ]
+          securityContext:
+            seccompProfile:
+              type: RuntimeDefault
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              add:
+                - NET_BIND_SERVICE
+              drop:
+                - ALL
+          volumeMounts:
+            - name: corefile
+              mountPath: /etc/coredns
+              readOnly: true
+            - name: zones
+              mountPath: /zones
+              readOnly: true
+            - name: tmp # coredns needs a writable temp directory when reloading configs, caching, and for plugins
+              mountPath: /tmp
+      volumes:
+        - name: corefile
+          configMap:
+            name: coredns-corefile
+        - name: zones
+          configMap:
+            name: coredns-zonefile
+        - name: tmp
+          emptyDir: {}
