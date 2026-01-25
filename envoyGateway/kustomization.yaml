@@ -8,3 +8,8 @@ helmCharts:
     namespace: envoy-gateway-system
     includeCRDs: true
     valuesFile: values.yaml
+resources:
+  - resources/proxyHuntInternalDevelopmentHome.yaml
+  - resources/proxyHuntInternalDevelopmentLab.yaml
+  - resources/proxyHuntInternalProductionHome.yaml
+  - resources/proxyHuntInternalProductionLab.yaml

@@ -6,7 +6,24 @@ metadata:
   namespace: gateway-api
 spec:
   gatewayClassName: gateway-class
+  infrastructure:
+    parametersRef:
+      group: gateway.envoyproxy.io
+      kind: EnvoyProxy
+      name: envoy-proxy-hunt-internal-production-home
   listeners:
+    - name: dns-udp
+      protocol: UDP
+      port: 53
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: dns-tcp
+      protocol: TCP
+      port: 53
+      allowedRoutes:
+        namespaces:
+          from: All
     - name: http
       protocol: HTTP
       port: 80

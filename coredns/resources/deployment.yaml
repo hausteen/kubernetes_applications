@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: coredns
 spec:
-  replicas: 1 # set to 2 eventually when i figure out how to get externalDNS to update both.
+  replicas: 2
   selector:
     matchLabels:
       app: coredns

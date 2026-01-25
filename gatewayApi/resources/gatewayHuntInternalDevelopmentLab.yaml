@@ -6,6 +6,11 @@ metadata:
   namespace: gateway-api
 spec:
   gatewayClassName: gateway-class
+  infrastructure:
+    parametersRef:
+      group: gateway.envoyproxy.io
+      kind: EnvoyProxy
+      name: envoy-proxy-hunt-internal-development-lab
   listeners:
     - name: http
       protocol: HTTP
