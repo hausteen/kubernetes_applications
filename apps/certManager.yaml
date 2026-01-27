@@ -4,14 +4,14 @@ metadata:
   name: cert-manager
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "40"
+    argocd.argoproj.io/sync-wave: "20"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/hausteen/kubernetesApplications.git
-    path: certManager
+    path: certManager/overlays/production
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc

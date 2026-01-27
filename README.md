@@ -8,13 +8,13 @@ I am using the app of apps pattern in Argo CD to deploy and manage Kubernetes ap
 | ---- | --------- |
 | namespaceCreation | 0 |
 | customResourceDefinitions | 10 |
-| argocd | 20 |
-| cilium | 30 |
-| certManager | 40 |
-| coredns | 41 |
-| envoyGateway | 50 |
+| certManager | 20 |
+| envoyGateway | 30 |
+| gatewayApi | 40 |
+| cilium | 50 |
 | longhorn | 60 |
-| gatewayApi | 70 |
+| argocd | 70 |
+| coredns | 80 |
 
 ## dependency list
 
@@ -22,13 +22,16 @@ I am using the app of apps pattern in Argo CD to deploy and manage Kubernetes ap
 | ---- | ---------------- |
 | namespaceCreation | none |
 | customResourceDefinitions | namespaceCreation |
-| argocd | none |
-| cilium | none |
 | certManager | namespaceCreation |
-| coredns | namespaceCreation |
-| envoyGateway | namespaceCreation, certmanager |
-| longhorn | namespaceCreation |
+| envoyGateway | namespaceCreation |
 | gatewayApi | namespaceCreation, certManager, envoyGateway |
+| argocd | gatewayApi |
+| cilium | gatewayApi |
+| coredns | namespaceCreation, gatewayApi |
+| longhorn | namespaceCreation, gatewayApi |
+
+I am putting the gateway api routes with each application. That means then that envoy gateway, gateway api, and
+certificates have to be in place before the other applications get installed.
 
 ## pod security admission standard
 

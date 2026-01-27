@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/hausteen/kubernetesApplications.git
-    path: longhorn
+    path: longhorn/overlays/production
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc

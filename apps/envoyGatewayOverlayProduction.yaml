@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: namespace-creation
+  name: envoy-gateway-overlay-production
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "31"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     repoURL: https://github.com/hausteen/kubernetesApplications.git
-    path: namespaceCreation/overlays/production
+    path: envoyGateway/overlays/production
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
@@ -25,3 +25,5 @@ spec:
       backoff:
         duration: 5s
         factor: 2
+    syncOptions:
+      - ServerSideApply=true
