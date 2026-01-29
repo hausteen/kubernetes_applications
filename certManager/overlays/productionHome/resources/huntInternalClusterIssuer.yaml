@@ -4,6 +4,7 @@ metadata:
   name: huntinternal
   annotations:
     argocd.argoproj.io/sync-wave: "30"
+    argocd.argoproj.io/hook: PostSync
 spec:
   ca:
     # `ClusterIssuer` resource is not namespaced, so `secretName` is assumed to reference secret in `cert-manager` namespace.

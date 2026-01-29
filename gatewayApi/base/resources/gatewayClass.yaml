@@ -4,5 +4,6 @@ metadata:
   name: placeholder-gatewayclass
   annotations:
     argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/hook: PostSync
 spec:
   controllerName: gateway.envoyproxy.io/placeholder-gatewayclass-controller

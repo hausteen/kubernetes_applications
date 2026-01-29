@@ -7,26 +7,24 @@ I am using the app of apps pattern in Argo CD to deploy and manage Kubernetes ap
 | name | sync wave |
 | ---- | --------- |
 | certManager | 10 |
-| envoyGateway | 20 |
-| gatewayApi | 30 |
-| cilium | 40 |
-| longhorn | 50 |
-| argocd | 60 |
-| coredns | 70 |
+| gatewayApi | 20 |
+| cilium | 30 |
+| longhorn | 40 |
+| argocd | 50 |
+| coredns | 60 |
 
 ## dependency list
 
 | name | dependency list |
 | ---- | ---------------- |
 | certManager | none |
-| envoyGateway | none |
-| gatewayApi | certManager, envoyGateway |
+| gatewayApi | certManager |
 | cilium | gatewayApi |
 | longhorn | gatewayApi |
 | argocd | gatewayApi |
 | coredns | gatewayApi |
 
-I am putting the gateway api routes with each application. That means then that envoy gateway, gateway api, and
+I am putting the gateway api routes with each application. That means then that gateway api and
 certificates have to be in place before the other applications get installed.
 
 ## pod security admission standard
