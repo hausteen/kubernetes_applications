@@ -2,5 +2,4 @@ crds:
   envoyGateway:
     enabled: true
   gatewayAPI:
-    channel: standard
-    enabled: true
+    enabled: false
