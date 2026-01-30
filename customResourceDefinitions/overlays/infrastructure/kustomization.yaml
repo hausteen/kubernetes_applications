@@ -7,5 +7,5 @@ helmCharts:
     includeCRDs: true
     valuesFile: valuesEnvoyGateway.yaml
 resources:
-  - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/standard-install.yaml # gateway api standard channel
+  # - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/standard-install.yaml # gateway api standard channel
   - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/experimental-install.yaml # gateway api experimental channel
