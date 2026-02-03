@@ -6,32 +6,35 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "10"
-    metallb.io/loadBalancerIPs: 192.168.20.80
+    # metallb.io/loadBalancerIPs: 192.168.20.80
   labels:
     istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
+  parametersRef:
+    kind: ConfigMap
+    name: gateway-options
   listeners:
     - name: mesh
       port: 15008
       protocol: HBONE
-    - name: http
-      protocol: HTTP
-      port: 80
-      allowedRoutes:
-        namespaces:
-          from: Same
-    - name: https
-      protocol: HTTPS
-      port: 443
-      allowedRoutes:
-        namespaces:
-          from: Same
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: argocd-waypoint-tls-termination
-            namespace: argocd
+    # - name: http
+    #   protocol: HTTP
+    #   port: 80
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: Same
+    # - name: https
+    #   protocol: HTTPS
+    #   port: 443
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: Same
+    #   tls:
+    #     mode: Terminate
+    #     certificateRefs:
+    #       - name: argocd-waypoint-tls-termination
+    #         namespace: argocd
 ...
 ---
 apiVersion: gateway.networking.k8s.io/v1
@@ -45,6 +48,9 @@ metadata:
     istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
+  parametersRef:
+    kind: ConfigMap
+    name: gateway-options
   listeners:
     - name: mesh
       port: 15008
@@ -58,30 +64,33 @@ metadata:
   namespace: longhorn-system
   annotations:
     argocd.argoproj.io/sync-wave: "10"
-    metallb.io/loadBalancerIPs: 192.168.20.81
+    # metallb.io/loadBalancerIPs: 192.168.20.81
   labels:
     istio.io/waypoint-for: service
 spec:
   gatewayClassName: istio-waypoint
+  parametersRef:
+    kind: ConfigMap
+    name: gateway-options
   listeners:
     - name: mesh
       port: 15008
       protocol: HBONE
-    - name: http
-      protocol: HTTP
-      port: 80
-      allowedRoutes:
-        namespaces:
-          from: Same
-    - name: https
-      protocol: HTTPS
-      port: 443
-      allowedRoutes:
-        namespaces:
-          from: Same
-      tls:
-        mode: Terminate
-        certificateRefs:
-          - name: longhorn-system-waypoint-tls-termination
-            namespace: longhorn-system
+    # - name: http
+    #   protocol: HTTP
+    #   port: 80
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: Same
+    # - name: https
+    #   protocol: HTTPS
+    #   port: 443
+    #   allowedRoutes:
+    #     namespaces:
+    #       from: Same
+    #   tls:
+    #     mode: Terminate
+    #     certificateRefs:
+    #       - name: longhorn-system-waypoint-tls-termination
+    #         namespace: longhorn-system
 ...
