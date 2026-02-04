@@ -9,3 +9,4 @@ resources:
   - resources/istio.yaml
   - resources/longhorn.yaml
   - resources/metalLb.yaml
+  - resources/infrastructure.yaml
