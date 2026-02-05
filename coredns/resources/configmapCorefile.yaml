@@ -9,7 +9,10 @@ data:
     hunt.internal {
       cache 30
       errors
-      file /zones/dbHuntInternal
+      auto {
+        directory /zones/
+        reload 30s
+      }
       health # only set 1 time for all the zones. its a global setting.
       loadbalance
       log
