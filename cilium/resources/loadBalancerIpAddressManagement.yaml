@@ -6,5 +6,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "10"
 spec:
   blocks:
-    - start: "192.168.20.80"
+    # do not request the first or last address of the pool.
+    # they are reserved for the network and broadcast addresses respectively.
+    - start: "192.168.20.79"
       stop: "192.168.20.99"
