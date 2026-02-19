@@ -4,9 +4,7 @@ metadata:
   name: coredns
   annotations:
     argocd.argoproj.io/sync-wave: "20"
-    lbipam.cilium.io/ips: "192.168.20.90"
 spec:
-  type: LoadBalancer
   selector:
     app: coredns
   ports:

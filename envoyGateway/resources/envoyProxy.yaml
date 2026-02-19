@@ -13,7 +13,7 @@ spec:
         replicas: 2
       envoyService:
         annotations:
-          lbipam.cilium.io/ips: "192.168.20.80"
+          lbipam.cilium.io/ips: "192.168.30.80"
   logging:
     level:
       default: debug

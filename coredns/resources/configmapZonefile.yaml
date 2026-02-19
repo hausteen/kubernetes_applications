@@ -17,8 +17,8 @@ data:
       30    ; minimum ttl   - 1 hour
       )
              IN NS ns1.hunt.internal. ; name server rr for the domain
-    ns1      IN A 192.168.20.90
-    argocd   IN A 192.168.20.80
-    longhorn IN A 192.168.20.80
+    ns1      IN A 192.168.30.2
+    argocd   IN A 192.168.30.20
+    longhorn IN A 192.168.30.20
 
 # dont forget... serial number - change this number each time a change is made or else coredns won't pick up the change
